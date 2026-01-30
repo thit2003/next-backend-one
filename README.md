@@ -20,6 +20,28 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Item API & UI
+
+This project includes a full CRUD REST API for an `items` collection and a simple React UI to manage items.
+
+### Environment
+
+Ensure `.env.local` contains `MONGODB_URI` pointing to your MongoDB instance.
+
+### API Endpoints
+
+- `GET /api/items?page=1&limit=10`: Paginated items list. Returns `{ data, page, limit, total, totalPages }`.
+- `POST /api/items`: Create item. Body: `{ itemName, itemCategory, itemPrice, status }`.
+- `GET /api/items/:id`: Get a single item by id.
+- `PATCH /api/items/:id`: Partial update. Body can include any of the item fields.
+- `PUT /api/items/:id`: Full replacement. Body must include all required fields.
+- `DELETE /api/items/:id`: Delete by id.
+
+### UI Page
+
+- Visit `/items` to access the Item Manager UI.
+- Supports pagination, create, inline edit, and delete.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
