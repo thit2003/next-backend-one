@@ -39,12 +39,16 @@ export async function GET(request) {
 
 function validateUser(payload) {
   const errors = [];
-  const { name, email, role, status } = payload || {};
+  const { name, email, role, status, firstName, lastName } = payload || {};
 
   if (!name || typeof name !== "string") errors.push("name is required (string)");
   if (!email || typeof email !== "string") errors.push("email is required (string)");
   if (!role || typeof role !== "string") errors.push("role is required (string)");
   if (status === undefined || typeof status !== "string") errors.push("status is required (string)");
+  
+  // Optional profile fields - validate if provided
+  if (firstName !== undefined && typeof firstName !== "string") errors.push("firstName must be a string");
+  if (lastName !== undefined && typeof lastName !== "string") errors.push("lastName must be a string");
 
   return errors;
 }
